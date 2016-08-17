@@ -1,12 +1,12 @@
 from kivy.app import App
-from kivy.uix.button import Button
+from kivy.uix.widget import Widget
 from kivy.uix.label import Label
 from kivy.properties import ObjectProperty
+from kivy.uix.behaviors import ButtonBehavior
 from kivy.config import Config
 
 
-
-class DrawingSpace(Button):
+class DrawingSpace(ButtonBehavior, Widget):
     current_color = ObjectProperty((1, 1, 1, 1))
 
     def __init__(self):
@@ -32,7 +32,10 @@ class DrawingSpace(Button):
         self.tasktext.halign = 'left'
         self.tasktext.valign = 'middle'
         self.tasktext.shorten_from = 'right'
-        self.bind(size=self.size_change)
+        self.bind(size=self.size_change, pos=self.size_change)
+
+
+
 
     def cycle_colors(self):
         pass
@@ -54,7 +57,7 @@ class DrawingSpace(Button):
         if not self.tasktext.shorten:
             self.multi_line_height = self.tasktext.texture_size[1] + short_padding
 
-        if self.tasktext.texture_size[1] + short_padding >= self.height and not self.shorten:
+        if self.tasktext.texture_size[1] + short_padding >= self.height and not self.tasktext.shorten:
             self.tasktext.shorten = True
         elif self.multi_line_height < self.height:
             self.tasktext.shorten = False
