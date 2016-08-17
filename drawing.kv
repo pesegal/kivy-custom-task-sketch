@@ -1,19 +1,21 @@
 <DrawingSpace>:
-    on_press: self.cycle_colors()
-    current_color: self.current_color
+    TheButton
 
-    canvas:
-        Color:
-            rgba: 0, 0, 0, .3
-        Rectangle:
-            pos: self.x + 10, self.y + 2
-            size: self.width*0.05 + 4, self.height - 2
+#    canvas:
+#        Color:
+#            rgba: 0, 0, 0, .3
+#        Rectangle:
+#            pos: self.x + 10, self.y + 2
+#            size: self.width*0.05 + 4, self.height - 2
+#
+#        Color:
+#            rgba: root.current_color
 
-        Color:
-            rgba: root.current_color
+<TheButton@Button>:
+#    background: 'test.png'
+#    border: [2] * 4
+#    pos: self.x + 12, self.y + 1
+#    size: self.width*0.05, self.height
 
-        Rectangle:
-            pos: self.x + 12, self.y + 1
-            size: self.width*0.05, self.height
 
 
