@@ -1,13 +1,13 @@
 from kivy.app import App
 from kivy.uix.button import Button
 from kivy.uix.label import Label
-from kivy.properties import ObjectProperty, StringProperty
+from kivy.properties import ListProperty, StringProperty
 from kivy.config import Config
 
 
 class DrawingSpace(Button):
-    current_color = ObjectProperty((1, 1, 1, 1))
-    text = StringProperty('TEST')
+    current_project_color = ListProperty([.3, .5, .6, 1])
+    current_shadow_color = ListProperty([1, 1, 1, 0.4])
 
     def __init__(self):
         super(DrawingSpace, self).__init__()
@@ -24,11 +24,15 @@ class DrawingSpace(Button):
             (0, 0, 0, 1)
         ]
 
-        # Return a list of only inheirted label attributes
+        # Return a list of only inherited label attributes
 
         self.tasktext = Label()
         self.add_widget(self.tasktext)
         self.tasktext.text = "This is a really long string for testing. We want the text to correctly align."
+        self.tasktext.color = [0,0,0,1] # primary color
+        self.tasktext.disabled_color = [0,0,0,.38] # disabled color
+        self.tasktext.font_size = 18
+
         self.tasktext.halign = 'left'
         self.tasktext.valign = 'middle'
         self.tasktext.shorten_from = 'right'
@@ -48,7 +52,7 @@ class DrawingSpace(Button):
         # self.tasktext.shorten = not self.tasktext.shorten
 
     def size_change(self, _object, size, short_padding=20):
-        start = self.width*.05 + 5
+        start = self.width*.07 + 5
 
         self.tasktext.width = self.width - start - 20
         self.tasktext.height = self.height

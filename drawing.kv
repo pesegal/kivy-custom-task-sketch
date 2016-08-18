@@ -1,5 +1,27 @@
 <DrawingSpace>:
 
+    background_normal: 'all_white2.png'
+    background_down: 'test.png'
+    border: [2, 2, 2, 2]
+
+    canvas:
+        Color:
+            rgba: [1,1,1,.4]
+        BorderImage:
+            source: 'shadow.png'
+            border: [3,3,3,3]
+            pos: self.x + 14, self.y
+            size: self.width*.07, self.height
+        Color:
+            rgba: root.current_project_color
+        BorderImage:
+            source: 'all_white2.png'
+            border: [2,2,2,2]
+            pos: self.x + 15, self.y + 2
+            size: self.width*.07 - 4, self.height - 4
+
+
+
 
 
 <TheButton@Button>:
