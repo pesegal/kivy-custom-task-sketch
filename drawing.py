@@ -1,13 +1,13 @@
 from kivy.app import App
-from kivy.uix.widget import Widget
+from kivy.uix.button import Button
 from kivy.uix.label import Label
-from kivy.properties import ObjectProperty
-from kivy.uix.behaviors import ButtonBehavior
+from kivy.properties import ObjectProperty, StringProperty
 from kivy.config import Config
 
 
-class DrawingSpace(ButtonBehavior, Widget):
+class DrawingSpace(Button):
     current_color = ObjectProperty((1, 1, 1, 1))
+    text = StringProperty('TEST')
 
     def __init__(self):
         super(DrawingSpace, self).__init__()
@@ -32,10 +32,10 @@ class DrawingSpace(ButtonBehavior, Widget):
         self.tasktext.halign = 'left'
         self.tasktext.valign = 'middle'
         self.tasktext.shorten_from = 'right'
-        self.bind(size=self.size_change, pos=self.size_change)
+        self.bind(size=self.size_change)
 
-
-
+    def set_text(self, text):
+        self.tasktext.text = text
 
     def cycle_colors(self):
         pass
@@ -74,4 +74,6 @@ class DrawingApp(App):
 if __name__ == '__main__':
     Config.set('graphics', 'width', '500')
     Config.set('graphics', 'height', '200')
-    DrawingApp().run()
+    a = DrawingApp().run()
+
+
